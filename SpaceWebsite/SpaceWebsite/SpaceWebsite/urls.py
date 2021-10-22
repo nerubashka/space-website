@@ -12,6 +12,7 @@ from app import forms, views
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
+    path('events/list', views.event_list, name='event_list'),
     path('about/', views.about, name='about'),
     path('login/',
          LoginView.as_view
