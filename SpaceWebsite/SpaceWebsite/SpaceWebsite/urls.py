@@ -22,10 +22,12 @@ urlpatterns = [
              extra_context=
              {
                  'title': 'Log in',
-                 'year' : datetime.now().year,
+                 'year': datetime.now().year,
              }
          ),
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
+    path('events/', views.event_list, name='news'),
+    path('events/<int:event_id>/', views.event_list_id)
 ]

@@ -2,9 +2,19 @@
 Definition of models.
 """
 
+import datetime
 import json
 
 from django.db import models
+
+
+def _event_json_default(value):
+    if isinstance(value, datetime.date):
+        return dict(year=value.year, month=value.month, day=value.day)
+    if isinstance(value, datetime.time):
+        return dict(hour=value.hour, minute=value.minute, second=value.second)
+    else:
+        return value.__dict__
 
 
 class EventCategory(models.Model):
@@ -29,4 +39,4 @@ class Event(models.Model):
         return self.title
 
     def tojson(self):
-        return json.dumps(self, default=lambda o: o.__dict__)
+        return json.dumps(self, default=_event_json_default).encode('utf-8')
