@@ -12,7 +12,8 @@ from app import forms, views
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
-    path('events/list', views.event_list, name='event_list'),
+    path('events/list/', views.event_list),
+    path('events/<int:event_id>/', views.event_list_id),
     path('about/', views.about, name='about'),
     path('login/',
          LoginView.as_view
@@ -28,6 +29,4 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    path('events/', views.event_list, name='news'),
-    path('events/<int:event_id>/', views.event_list_id)
 ]

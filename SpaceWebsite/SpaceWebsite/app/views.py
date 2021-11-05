@@ -3,16 +3,35 @@ Definition of views.
 """
 
 from datetime import datetime
-from django.shortcuts import render, render_to_response
+
+from django.core import serializers
 from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render
+
 from .models import Event
-import json
 
 
-def event_list(request):
-    """Return JSON for all events"""
-    e = Event.objects.all()
-    return HttpResponse([x.tojson() for x in list(e)])
+def event_list(request, **kwargs):
+    """Return JSON for all events with search and sorting"""
+    events = Event.objects.all()
+    title = request.GET.get('title')
+    sort_up = request.GET.get('sort_up')
+    sort_down = request.GET.get('sort_down')
+    date = request.GET.get('date')
+    text = request.GET.get('text')
+
+    if title is not None:
+        events = events.filter(title__iexact=title)
+    if date is not None:
+        events = events.filter(begin_date__iexact=date)
+    if text is not None:
+        events = events.filter(description__contains=text)
+    if sort_up:
+        events = events.order_by('-begin_date')
+    if sort_down:
+        events = events.order_by('begin_date')
+
+    return HttpResponse([x.tojson() for x in list(events)])
 
 
 def event_list_id(request, event_id):
