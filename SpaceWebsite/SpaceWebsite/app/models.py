@@ -18,22 +18,28 @@ def _event_json_default(value):
 
 
 class EventCategory(models.Model):
-    type = models.CharField(max_length=15, null=True)
-
+    type = models.CharField(max_length=100, null=True, verbose_name= 'Название')
+    class Meta:
+        verbose_name = u"Тип события"
+        verbose_name_plural = u"Типы событий"
     def __str__(self):
         return self.type
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=100, blank=False)
-    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE, null=True, blank=False)
-    description = models.TextField(blank=False, null=True)
+    class Meta:
+        verbose_name = u"Событие"
+        verbose_name_plural = u"События"
+
+    title = models.CharField(max_length=100, blank=False, verbose_name='Название')
+    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE, null=True, blank=False, verbose_name='Тип')
+    description = models.TextField(blank=False, null=True, verbose_name='Описание')
     image = models.ImageField(upload_to='events_images', height_field=None, width_field=None,
-                              max_length=100, blank=True, null=True)
-    begin_date = models.DateField(blank=True, null=True)
-    end_data = models.DateField(blank=True, null=True)
-    begin_time = models.TimeField(blank=True, null=True)
-    end_time = models.TimeField(blank=True, null=True)
+                              max_length=100, blank=True, null=True,verbose_name='Иллюстрация')
+    begin_date = models.DateField(blank=True, null=True, verbose_name='Дата начала')
+    end_data = models.DateField(blank=True, null=True, verbose_name='Дата окончания')
+    begin_time = models.TimeField(blank=True, null=True, verbose_name='Время начала')
+    end_time = models.TimeField(blank=True, null=True, verbose_name='Время окончания')
 
     def __str__(self):
         return self.title
