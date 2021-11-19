@@ -6,6 +6,7 @@ import datetime
 import json
 
 from django.db import models
+from djrichtextfield.models import RichTextField
 
 
 def _event_json_default(value):
@@ -16,6 +17,25 @@ def _event_json_default(value):
     else:
         return value.__dict__
 
+
+class News(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = 'Заголовок')
+    text = RichTextField(verbose_name='Текст')
+    publishing_date = models.DateTimeField(verbose_name = 'Дата публикации')
+    def __str__(self):
+        return self.title 
+    class Meta:
+        verbose_name = u"Новость"
+        verbose_name_plural = u"Новости"
+
+class CommonText(models.Model):
+    title = models.CharField(max_length = 100, verbose_name = 'Название')
+    text = RichTextField(verbose_name='Текст')
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = u"Текст для раздела"
+        verbose_name_plural = u"Тексты для разделов"
 
 class EventCategory(models.Model):
     type = models.CharField(max_length=100, null=True, verbose_name= 'Название')
