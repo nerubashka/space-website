@@ -8,14 +8,15 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
 from django.conf.urls import include
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('news', views.news, name='news'),
+    path('', views.NewsListView.as_view(), name='news'),
+    path('news', views.NewsListView.as_view(), name='news'),
     path('about', views.about, name='about'),
     path('events/list/', views.event_list),
     path('events/<int:event_id>/', views.event_list_id),
     path('admin/', admin.site.urls),
-    path('djrichtextfield/', include('djrichtextfield.urls'))
-]
+    path('djrichtextfield/', include('djrichtextfield.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

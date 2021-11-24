@@ -7,6 +7,9 @@ import json
 
 from django.db import models
 from djrichtextfield.models import RichTextField
+from django.conf.urls.static import static
+from django.conf import settings
+from embed_video.fields  import  EmbedVideoField
 
 
 def _event_json_default(value):
@@ -22,6 +25,9 @@ class News(models.Model):
     title = models.CharField(max_length = 100, verbose_name = 'Заголовок')
     text = RichTextField(verbose_name='Текст')
     publishing_date = models.DateTimeField(verbose_name = 'Дата публикации')
+    picture = models.ImageField(null=True, blank=True)
+    video = EmbedVideoField(null=True, blank=True)
+    
     def __str__(self):
         return self.title 
     class Meta:

@@ -52,12 +52,36 @@
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
     <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\img\" />
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="SpaceWebsite\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\fonts\FiraSans-Black.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-BlackItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Bold.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-BoldItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-ExtraBold.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-ExtraBoldItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-ExtraLight.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-ExtraLightItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Italic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Light.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-LightItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Medium.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-MediumItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Regular.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-SemiBold.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-SemiBoldItalic.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-Thin.ttf" />
+    <Content Include="app\static\app\fonts\FiraSans-ThinItalic.ttf" />
+    <Content Include="app\static\app\img\FSR_logo.svg" />
+    <Content Include="app\static\app\img\FSR_Logo_FullSize.svg" />
+    <Content Include="app\static\app\img\news_back.svg" />
+    <Content Include="app\templates\app\news.html" />
+    <Content Include="app\templates\app\news_list.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -82,12 +106,8 @@
     <Content Include="app\static\app\scripts\respond.js" />
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\static\app\scripts\_references.js" />
-    <Content Include="app\templates\app\about.html" />
-    <Content Include="app\templates\app\contact.html" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\login.html" />
-    <Content Include="app\templates\app\loginpartial.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">

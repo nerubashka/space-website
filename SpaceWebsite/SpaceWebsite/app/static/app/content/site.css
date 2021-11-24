@@ -154,6 +154,7 @@
 
     padding-left:32px;
     padding-right:32px;
+    
 }
 
 .news-card{
@@ -163,8 +164,14 @@
     padding: 16px;
 }
 
-.soon-event-list{
+.news-list {
+    max-height: calc(98vh);
+    overflow-y: auto;
+}
+
+.soon-event-list {
     max-height: calc(60vh);
+    overflow-y: auto;
 }
 
 .left-aligned {
@@ -201,4 +208,15 @@
 
 .zero-left-padded{
     padding-left: 0;
+}
+
+.card-img{
+    max-width: 100%;
+}
+
+.card-video{
+
+}
+.news-body{
+    margin-top:16px;
 }
