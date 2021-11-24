@@ -1,42 +1,204 @@
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+
+@font-face {
+    font-family: 'Fira Sans ExtraBold';
+    src: url("../fonts/FiraSans-ExtraBold.ttf");
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@font-face {
+    font-family: 'Fira Sans';
+    src: url("../fonts/FiraSans-Regular.ttf");
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.page {
+    max-height: 100vh;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.main-logo {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.field-validation-valid {
-    display: none;
+.icon{
+
 }
 
-input.input-validation-error {
-    border: 1px solid #b94a48;
+.icon.very-big{
+    width: 148px;
+    height: 148px;
 }
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
+.icon.logo{
+    background-image: url("../img/FSR_Logo_FullSize.svg")
 }
 
-.validation-summary-errors {
-    color: #b94a48;
+
+.left-part {
+    height: calc(100vh);
+    max-height: calc(100vh);
+    background-color: #FFFFFF;
+    display: inline-block;
+    padding-left: 40px;
+    padding-top:65px;
+
+    overflow-y: hidden;
 }
 
-.validation-summary-valid {
-    display: none;
+.header {
+    font-family: Fira Sans ExtraBold;
+    font-style: normal;
+    font-weight: 900;
+    color: #220022;
+}
+
+    .header.giant {
+        
+        font-size: 66px;
+        line-height: 79px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .header.tiny {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .header.subheader {
+        font-size: 64px;
+        line-height: 77px;
+    }
+
+    .header.selected {
+            color: #A259FF;
+        }
+
+    .header.eventheader {
+        font-size: 32px;
+        line-height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        min-height: 79px;
+        max-height: 79px;
+        /* Internet Explorer 10 */
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+        /* Firefox */
+        display: -moz-box;
+        -moz-box-align: center;
+        /* Safari, Opera, and Chrome */
+        display: -webkit-box;
+        -webkit-box-align: center;
+        /* W3C */
+        display: box;
+        box-align: center;
+    }
+
+    .nav-tab-header{
+        display: inline-block;
+        margin-right: 32px;
+    }
+
+.right-part {
+    height: calc(100vh);
+    max-height: calc(100vh);
+    background-color: #F5F5F5;
+    padding-bottom: 65px;
+    text-align: center;
+    overflow-y: hidden;
+}
+
+
+
+
+.navbar{
+    margin-top:48px;
+}
+    .navbar span {
+        font-family: Fira Sans ExtraBold;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #38204F;
+        margin-right: 24px;
+    }
+
+    .navbar span.selected {
+        color: #A259FF;
+    }
+
+
+.desc-text {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #220022;
+}
+
+.news-block {
+/*    background-image: url('../img/news_back.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;*/
+
+    padding-left:32px;
+    padding-right:32px;
+}
+
+.news-card{
+    margin-top:32px;
+    background-color:white;
+    border-radius:10px;
+    padding: 16px;
+}
+
+.soon-event-list{
+    max-height: calc(60vh);
+}
+
+.left-aligned {
+    text-align: left;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.centred{
+    text-align: center;
+}
+
+.eventcard {
+    margin-top: 32px;
+
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #828282;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #828282;
+}
+
+.zero-left-padded{
+    padding-left: 0;
 }

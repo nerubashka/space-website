@@ -1,0 +1,78 @@
+{% extends "app/layout.html" %}
+
+{% block description %}
+
+<div class="tiny header left-aligned col-md-4 zero-left-padded">
+    <span>Ближайшие события</span>
+</div>
+
+<div class="soon-event-list col-md-11  zero-left-padded ">
+{% for e in events%}
+ 
+
+        <div class="row eventcard">
+            <div class="col-md-2 col-sm-2 centred">
+                <div class="giant header">
+                   {{e.begin_date.day}}
+                </div>
+                <div class="tiny header">
+                     {{e.begin_date|date:"E"}}
+                </div>
+                <div class="tiny header">
+                     {{e.begin_date.year}}
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-5">
+                 <div class="eventheader header bottom-aligned left-aligned">
+                   {{e.title}}
+                </div>
+                 <div class="tiny header  left-aligned">
+                    {% if e.long %} 
+                        начало:  &nbsp;{{e.begin_time}}
+                    {% else %} 
+                        {{e.begin_time}} &#8211;  {{e.end_time}} 
+                    {% endif %}
+                </div>
+                 <div class="tiny header  left-aligned">
+                    {% if e.long %} 
+                        окончание: &nbsp; {{e.end_data}} {{e.end_time}}
+                    {% endif %}
+                </div>
+            </div>
+    </div>
+   
+
+    {% endfor %}
+ </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="news-block">
+    
+    <div id="news_list" class="col-md-12">
+        {% for n in news%}
+         <div class="row news-card">
+             <div class="row">
+                <div class="col-md-8 col-sm-10 eventheader header bottom-aligned left-aligned">
+                     {{n.title}}
+                </div>
+                 <div class="col-md-4 col-sm-2 tiny header bottom-aligned right-aligned">
+                     {{n.publishing_date| date:"d.m.Y H:m"}}
+                 </div>
+             </div>
+             <div class="row">
+                   <div class="col-md-11 desc-text left-aligned">
+                   {{n.text|safe}}
+                </div>
+             </div>
+         </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
+

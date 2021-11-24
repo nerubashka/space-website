@@ -13,6 +13,7 @@ from django.conf.urls import include
 urlpatterns = [
     path('', views.home, name='home'),
     path('news', views.news, name='news'),
+    path('about', views.about, name='about'),
     path('events/list/', views.event_list),
     path('events/<int:event_id>/', views.event_list_id),
     path('admin/', admin.site.urls),
