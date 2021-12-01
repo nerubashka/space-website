@@ -35,6 +35,10 @@
     </Compile>
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
+    <Compile Include="app\templatetags\app_extras.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\templatetags\__init__.py" />
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
@@ -48,6 +52,7 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\templatetags\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
@@ -80,6 +85,7 @@
     <Content Include="app\static\app\img\FSR_logo.svg" />
     <Content Include="app\static\app\img\FSR_Logo_FullSize.svg" />
     <Content Include="app\static\app\img\news_back.svg" />
+    <Content Include="app\templates\app\events.html" />
     <Content Include="app\templates\app\news.html" />
     <Content Include="app\templates\app\news_list.html" />
     <Content Include="requirements.txt" />

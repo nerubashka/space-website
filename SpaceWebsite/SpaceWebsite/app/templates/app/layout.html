@@ -3,8 +3,7 @@
 <head>
     <meta name="viewport"  charset="utf-8" >
     <title>{{ title }} - My Django Application</title>
-    {% load static %}
-    {% load embed_video_tags %}
+    {% load static app_extras embed_video_tags%}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
@@ -31,7 +30,7 @@
                 <div class="navbar">
                     <a href="/about"><span id="about">О нас</span></a>
                     <a href="/news"><span id="news">Новости</span></a>
-                    <a href="/news"><span id="events">События</span></a>
+                    <a href="/events"><span id="events">События</span></a>
                     <a ><span id="people">Люди</span></a>
                     <a ><span id="science">Наука</span></a>
                     <a ><span id="education">Образование</span></a>
@@ -54,6 +53,7 @@
     document.addEventListener("DOMContentLoaded", function(){
     if ('{{page_name}}'!='')
      document.getElementById('{{page_name}}').className += " selected";
+
 });
 </script>
 </html>

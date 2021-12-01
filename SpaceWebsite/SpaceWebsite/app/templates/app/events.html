@@ -1,0 +1,177 @@
+{% extends "app/layout.html" %}
+
+{% block description %}
+{% load app_extras %}
+{% load embed_video_tags %}
+
+<div class="tiny header left-aligned col-md-4 zero-left-padded">
+    <span>Свежие новости</span>
+</div>
+
+<div class="soon-event-list col-md-12  zero-left-padded ">
+{% for n in news%}
+    <div class="row news-card">
+        <div class="row">
+            <div class="col-md-9 col-sm-10 eventheader header bottom-aligned left-aligned">
+                <a class="title-ref" href="news/{{n.id}}">{{n.title}}</a>
+            </div>
+            <div class="col-md-3 col-sm-2 tiny header bottom-aligned right-aligned">
+                <span>{{n.publishing_date| date:"d.m.Y H:m"}}</span>
+                {#<a class="more" href="news/{{n.id}}"><span>Подробнее</span></a>#}
+            </div>
+        </div>
+        <div class="row news-body common-text">
+            <div class="col-md-11 desc-text short left-aligned">
+                {{n.text|font_default|safe}}
+            </div>
+        </div>
+    </div>
+{% endfor %}   
+ </div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="news-block">
+    <div class="row zero-left-padded">
+          <input class="col-md-8 col-sm-8" placeholder="Поиск..." id="mainsearch" onchange="search('title',this.value)"/>
+          <div class="col-md-4">
+              <div class="tiny header bottom-aligned right-aligned filter label"> События с </div>
+              <input type="date" class="filter" id="from" value="{{from|date:"Y-m-d"}}" onchange="search('date_from', this.value)">
+              <div class=" tiny header bottom-aligned right-aligned filter label"> по </div>
+              <input type="date" class="filter"  id="to"  onchange="search('date_to', this.value)">
+          </div>
+          
+    </div>
+    <div class="row zero-left-padded">
+          <div class="news-list  col-md-12">
+
+        {% for e in event_list%}
+        <div class="row  news-card">
+            <div class="row">
+            <div class="col-md-1 col-sm-1 centred">
+                <div class="giant header">
+                    {{e.begin_date.day}}
+                </div>
+                <div class="tiny header">
+                    {{e.begin_date|date:"E"}}
+                </div>
+                <div class="tiny header">
+                    {{e.begin_date.year}}
+                </div>
+            </div>
+            <div class="col-md-11 col-sm-5">
+                <div class="eventheader header bottom-aligned left-aligned">
+                    {{e.title}}
+                </div>
+                <div class="tiny header  left-aligned">
+                    {% if e.long %}
+                    начало:  &nbsp;{{e.begin_time}}
+                    {% else %}
+                    {{e.begin_time}} &#8211;  {{e.end_time}}
+                    {% endif %}
+                </div>
+                <div class="tiny header  left-aligned">
+                    {% if e.long %}
+                    окончание: &nbsp; {{e.end_data}} {{e.end_time}}
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+                <div class="row news-body common-text">
+                   <div class="{% if e.picture or e.video %} col-md-6 {% else %} col-md-11{% endif %} desc-text left-aligned">
+                       {{e.description|font_default|safe}}
+                   </div>
+                 {% if e.picture %} 
+                 <div class="col-md-6">
+                    <img class="card-img" src="{{e.picture.url}}"/>
+                 </div>
+                 {% endif %} 
+                 {% if e.video %} 
+                 <div class="col-md-6">
+                        {% video e.video "100% x 400px"%}
+                  </div>
+                 {% endif %} 
+                 
+             </div>
+            
+        </div>
+
+
+        {% endfor %}
+        <div class="pagination">
+            <span class="step-links common-text">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+                {% endif %}
+
+                <span class="current">
+                    Страница {{ page_obj.number }} из {{ paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Дальше</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+   
+    </div>
+   
+</div>
+
+<script>
+    const input = document.getElementById('mainsearch');
+
+     document.addEventListener("DOMContentLoaded", function(){
+         var input = document.getElementById('mainsearch');
+         var df = document.getElementById('from');
+         var dt = document.getElementById('to');
+
+
+         let url = window.location;
+         let searchParams = new URLSearchParams(url.search);
+
+         input.value = searchParams.get('title') ? searchParams.get('title') : null;
+         if(searchParams.get('date_from'))
+             df.value = searchParams.get('date_from');
+         if(searchParams.get('date_to'))
+            dt.value = searchParams.get('date_to');
+
+
+     });
+
+    var search_params = {}
+
+    function search(key, val) {
+
+         var paramName = key;
+            var newParam = paramName + '=' + val;
+         
+            if (window.location.search) {
+                var regex = new RegExp(paramName + '=[^&$]*', 'i');
+                let url = window.location;
+                let searchParams = new URLSearchParams(url.search);
+                if (searchParams.get(key)){
+                    window.location.search = window.location.search.replace(regex, newParam);
+                }
+                else {
+                    searchParams.set(key, val);
+                    window.location.search = searchParams;
+                }
+            } else {
+                window.location.search = newParam;
+            }
+         
+        
+    }
+
+    function filter_change(key, val) {
+        search_params[key] = val;
+        search();
+    }
+</script>
+{% endblock %}
+
+
