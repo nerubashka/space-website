@@ -7,6 +7,7 @@
     {% load embed_video_tags %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <link rel="icon" type="image/svg+xml" href="media/F-orange.svg">
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
@@ -29,7 +30,8 @@
                 </div>
 
                 <div class="navbar">
-                    <a href="/about"><span id="about">О нас</span></a>
+                    <!--<a href="/about"><span id="about">О нас</span></a>-->
+                    <a href="/documents"><span id="documents">Факультет</span></a>
                     <a href="/news"><span id="news">Новости</span></a>
                     <a href="/news"><span id="events">События</span></a>
                     <a ><span id="people">Люди</span></a>
@@ -39,13 +41,13 @@
                 </div>
 
                 {% block description %}{% endblock %}
+                {% block footer %}{% endblock %}
 
                 <div></div>
         </div>
 
          <div class="right-part col-lg-8">
-             
-             {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
               
          </div>
     </div>

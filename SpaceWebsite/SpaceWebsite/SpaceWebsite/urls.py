@@ -14,6 +14,7 @@ from django.conf import settings
 urlpatterns = [
     path('', views.NewsListView.as_view(), name='news'),
     path('news', views.NewsListView.as_view(), name='news'),
+    path('documents', views.documents, name='documents'),
     path('about', views.about, name='about'),
     path('events/list/', views.event_list),
     path('events/<int:event_id>/', views.event_list_id),

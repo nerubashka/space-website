@@ -37,18 +37,17 @@ def get_event_list(request, **kwargs):
 
     return events
 
+
 def event_list(request, **kwargs):
     """Return JSON for all events with search and sorting"""
     events = get_event_list(request, **kwargs)
     return HttpResponse([x.tojson() for x in list(events)])
 
 
-
 def event_list_id(request, event_id):
     """Return JSON for event by id"""
     e = Event.objects.get(pk=event_id)
     return HttpResponse(e.tojson())
-
 
 
 def new_list(request, **kwargs):
@@ -80,7 +79,7 @@ def news(request):
         request,
         'app/news.html',
         {
-            'title': 'Home Page',
+            'title': 'News',
             'year': datetime.now().year,
             'page_name': 'news',
             'greetings': g_str,
@@ -117,6 +116,25 @@ class NewsListView(ListView):
 def home(request):
     return news(request)
 
+def documents(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    t = CommonText.objects.all().filter(title='О нас')
+    g_str = " "
+    if len(t) > 0:
+        g_str = t[0].text
+    return render(
+        request,
+        'app/documents.html',
+        {
+            'title': 'Documents',
+            'year': datetime.now().year,
+            'page_name': 'documents',
+            'greetings': g_str,
+            'sub_page': 'news',
+        }
+    )
+
 def about(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -135,5 +153,3 @@ def about(request):
             'sub_page': 'news',
         }
     )
-
-

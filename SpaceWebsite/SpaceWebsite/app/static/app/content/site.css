@@ -2,11 +2,13 @@
 @font-face {
     font-family: 'Fira Sans ExtraBold';
     src: url("../fonts/FiraSans-ExtraBold.ttf");
+    color: #220022;
 }
 
 @font-face {
     font-family: 'Fira Sans';
     src: url("../fonts/FiraSans-Regular.ttf");
+    color: #220022;
 }
 
 .page {
@@ -15,8 +17,9 @@
 
 .main-logo {
     position: absolute;
-    top: 10px;
-    right: 30px;
+    top: 45px;
+    height: auto;
+    left: 540px;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -26,8 +29,8 @@
 }
 
 .icon.very-big{
-    width: 148px;
-    height: 148px;
+    width: 92px;
+    height: 92px;
 }
 
 .icon.logo{
@@ -41,7 +44,7 @@
     background-color: #FFFFFF;
     display: inline-block;
     padding-left: 40px;
-    padding-top:65px;
+    padding-top:45px;
 
     overflow-y: hidden;
 }
@@ -54,11 +57,11 @@
 }
 
     .header.giant {
-        
         font-size: 66px;
-        line-height: 79px;
+        line-height: 79.2px;
         letter-spacing: 0.04em;
         text-transform: uppercase;
+        top: 5%;
     }
 
     .header.tiny {
@@ -144,6 +147,106 @@
     color: #220022;
 }
 
+/*<!--стили-->*/
+.content-header {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+.content-subheader {
+    font-family: Fira Sans ExtraBold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 50px;
+}
+
+.content-text {
+    font-size: 16px;
+    line-height: 19px;
+}
+.content-text p{ 
+    padding-bottom: 10px;
+}
+
+.content-link{
+    font-weight: bolder;
+    text-decoration: none;
+    outline: none;
+}
+.content-link:link {
+    color: #38204F;
+}
+.content-link:visited {
+    color: #38204F;
+}
+.content-link:hover {
+    color: #a259ff;
+}
+/*<!--/стили-->*/
+
+/*<!--Факультет-->*/
+.documents-block {
+    font-family: Fira Sans;
+    font-style: normal;
+    text-align: left;
+    font-weight: normal;
+    padding-top: 11.5%;
+    padding-left: 40px;
+    padding-right: 75px;
+    color: #220022;
+}
+.document-list {
+    line-height: 24px;
+}
+
+summary::-webkit-details-marker{display:none;}
+summary::-moz-list-bullet{list-style-type:none;}
+summary::marker{display:none;} 
+summary {
+   display:inline-block;
+   padding: .3em 1.7em .6em 0em;
+   cursor: pointer;
+   position: relative;
+   font-weight: bolder;
+   color: #38204F;
+}
+summary:before {
+  right: .7em;
+  top: .4em;
+  font-weight: bolder;
+  color: #38204F;
+  background: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjM0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC41OSAxNi4zNGw0LjU4LTQuNTktNC41OC00LjU5TDEwIDUuNzVsNiA2LTYgNnoiLz48L3N2Zz4=") no-repeat 50% 50% / 1em 1em;
+  width: 1em;
+  height: 1em;  
+  content: "";
+  position: absolute;
+  transition: transform .5s;
+}
+details[open] > summary:before {
+  transform: rotateZ(90deg);
+}
+summary ~ * {
+   padding:0 1em 0 1em;
+}
+details[open] summary ~ *{ 
+  animation: sweep .5s ease-in-out;
+}
+@keyframes sweep {
+  0%    {opacity: 0;}
+  100%  {opacity: 1;}
+}
+summary:focus {
+  outline:0;
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.3), inset 0 0 2px rgba(0,0,0,0.3);
+}
+details{
+  display:block;
+  margin-bottom: .5rem;
+}
+/*<!--/Факультет-->*/
+
+/*<!--Новости-->*/
 .news-block {
 /*    background-image: url('../img/news_back.svg');
     background-repeat: no-repeat;
@@ -220,3 +323,4 @@
 .news-body{
     margin-top:16px;
 }
+/*<!--/Новости-->*/
